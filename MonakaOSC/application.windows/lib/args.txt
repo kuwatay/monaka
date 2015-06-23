@@ -1,0 +1,3 @@
+
+MonakaOSC
+MonakaOSC.jar,core.jar,guicomponents.jar,themidibus.jar,oscP5.jar,oscP5.jar

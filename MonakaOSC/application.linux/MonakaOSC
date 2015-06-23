@@ -1,0 +1,4 @@
+#!/bin/sh
+
+APPDIR=$(dirname "$0")
+java  -Djava.library.path="$APPDIR" -cp "$APPDIR/lib/MonakaOSC.jar:$APPDIR/lib/core.jar:$APPDIR/lib/guicomponents.jar:$APPDIR/lib/themidibus.jar:$APPDIR/lib/oscP5.jar:$APPDIR/lib/oscP5.jar" MonakaOSC
