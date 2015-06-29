@@ -181,6 +181,30 @@ public class monaka {
     }
 
     /**
+     * Direct send Note On
+     *
+     * @param channel MIDI channel number. Monaka use only channel 1 (value =0)
+     * @param noteNo note number
+     * @param velocity velocity value
+     * @see #setMode(int mode)
+     */
+    public void sendNoteOn(int channel, int noteNo, int velocity) {
+	monakaDev.sendNoteOn(channel, noteNo, velocity);
+    }
+
+    /**
+     * Direct send Note Off
+     *
+     * @param channel MIDI channel number. Monaka use only channel 1 (value =0)
+     * @param noteNo note number
+     * @param velocity velocity value
+     * @see #setMode(int mode)
+     */
+    public void sendNoteOff(int channel, int noteNo, int velocity) {
+	monakaDev.sendNoteOff(channel, noteNo, velocity);
+    }
+
+    /**
      * Call Back function for noteOn. Users should not use this function.
      *
      * @param channel MIDI channel number. Monaka use only channel 1 (value =0)
