@@ -4,7 +4,7 @@
 //
 
 import monaka.*;
-import themidibus.*;  // required !!
+import themidibus.*;
 
 monaka pepper;
 
@@ -15,8 +15,7 @@ void setup() {
   pepper = new monaka(1);
 }
 
-void draw() {
-  
+void draw() {  
   if (mousePressed == true) {
     background(255);
     fill(0);
