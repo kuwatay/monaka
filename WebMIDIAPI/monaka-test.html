@@ -1,0 +1,35 @@
+<html>
+
+<body>
+<script src="js/monaka.js"></script>
+
+<h1> Simple monaka control </h1>
+<script type="text/javascript">
+var pepper = new monaka();
+</script>
+<h2> Set Monaka Mode</h2>
+<input type="button" value="Mode 1" onClick="pepper.setMode(1);">
+<input type="button" value="Mode 2" onClick="pepper.setMode(2);">
+<input type="button" value="Mode 3" onClick="pepper.setMode(3);">
+<input type="button" value="Mode 4" onClick="pepper.setMode(4);">
+<input type="button" value="Mode 5" onClick="pepper.setMode(5);">
+<input type="button" value="Mode 6" onClick="pepper.setMode(6);">
+<input type="button" value="Mode 7" onClick="pepper.setMode(7);">
+<input type="button" value="Mode 8" onClick="pepper.setMode(8);">
+<br>
+<h2> Digital Output</h2>
+<input type="button" value="Port1 On" onClick="pepper.sendNoteOn(60,127);">
+<input type="button" value="Port1 Off" onCLick="pepper.sendNoteOff(60, 0);">
+<br>
+<input type="button" value="Port2 On" onClick="pepper.sendNoteOn(61,127);">
+<input type="button" value="Port2 Off" onCLick="pepper.sendNoteOff(61, 0);">
+<br>
+<input type="button" value="Port3 On" onClick="pepper.sendNoteOn(62,127);">
+<input type="button" value="Port3 Off" onCLick="pepper.sendNoteOff(62, 0);">
+<br>
+<input type="button" value="Port4 On" onClick="pepper.sendNoteOn(63,127);">
+<input type="button" value="Port4 Off" onCLick="pepper.sendNoteOff(63, 0);">
+<br>
+
+</body>
+</html>
