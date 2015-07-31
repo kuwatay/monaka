@@ -1,8 +1,10 @@
 //
-// Monaka.js for Chrome
+// Web MIDI wrapper for monaka
+// monaka.js for Chrome
+// 
 //  (c) 2015 by morecat_lab
 //
-//
+// based on poormidi.js at https://github.com/tadfmac/poormidi
 //
 
 var monaka = function() {
