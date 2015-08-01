@@ -6,6 +6,11 @@
 <h1> Simple monaka control </h1>
 <script type="text/javascript">
 var pepper = new monaka();
+function updateAnalog(v) { document.getElementById("ain1").innerText = v[0] + "," +v[1] + "," + v[2] + "," + v[3]; }
+pepper.setAnalogInEventCallback(updateAnalog);
+function updateDigital(v) { document.getElementById("din1").innerText = v[0] + "," +v[1] + "," + v[2] + "," + v[3]; }
+pepper.setDigitalInEventCallback(updateDigital);
+
 </script>
 <h2> Set Monaka Mode</h2>
 <input type="button" value="Mode 1" onClick="pepper.setMode(1);">
@@ -30,6 +35,12 @@ var pepper = new monaka();
 <input type="button" value="Port4 On" onClick="pepper.sendNoteOn(63,127);">
 <input type="button" value="Port4 Off" onCLick="pepper.sendNoteOff(63, 0);">
 <br>
+<h2> Analog Input</h2>
+<div id="ain1">
+</div>
+<h2> Digital Input</h2>
+<div id="din1">
+</div>
 
 </body>
 </html>
