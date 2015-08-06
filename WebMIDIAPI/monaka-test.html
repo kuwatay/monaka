@@ -6,41 +6,90 @@
 <h1> Simple monaka control </h1>
 <script type="text/javascript">
 var pepper = new monaka();
-function updateAnalog(v) { document.getElementById("ain1").innerText = v[0] + "," +v[1] + "," + v[2] + "," + v[3]; }
+var mode = 1;
+function updateAnalog(v) { 
+	document.getElementById("ain0").innerText = v[0];
+	document.getElementById("ain1").innerText = v[1];
+	document.getElementById("ain2").innerText = v[2];
+	document.getElementById("ain3").innerText = v[3];
+}
 pepper.setAnalogInEventCallback(updateAnalog);
-function updateDigital(v) { document.getElementById("din1").innerText = v[0] + "," +v[1] + "," + v[2] + "," + v[3]; }
+function updateDigital(v) {
+	document.getElementById("din0").innerText = v[0];
+	document.getElementById("din1").innerText = v[1];
+	document.getElementById("din2").innerText = v[2];
+	document.getElementById("din3").innerText = v[3];
+}
 pepper.setDigitalInEventCallback(updateDigital);
-
+function setMode(m) {
+	mode = m;
+	var i;
+	pepper.setMode(m);
+	for (i = 1 ; i <= 8 ; i++) {
+		var bid = document.getElementById("mode"+i+"Button");
+		if (m == i) {
+			bid.style.background='#ff0000';
+		} else {
+			bid.style.background='#ffffff';
+		}
+	}
+}
 </script>
 <h2> Set Monaka Mode</h2>
-<input type="button" value="Mode 1" onClick="pepper.setMode(1);">
-<input type="button" value="Mode 2" onClick="pepper.setMode(2);">
-<input type="button" value="Mode 3" onClick="pepper.setMode(3);">
-<input type="button" value="Mode 4" onClick="pepper.setMode(4);">
-<input type="button" value="Mode 5" onClick="pepper.setMode(5);">
-<input type="button" value="Mode 6" onClick="pepper.setMode(6);">
-<input type="button" value="Mode 7" onClick="pepper.setMode(7);">
-<input type="button" value="Mode 8" onClick="pepper.setMode(8);">
+<input type="button" id="mode1Button" value="Mode 1" style="background-color:#ff0000" onClick="setMode(1);">
+<input type="button" id="mode2Button" value="Mode 2" style="background-color:#ffffff" onClick="setMode(2);">
+<input type="button" id="mode3Button" value="Mode 3" style="background-color:#ffffff" onClick="setMode(3);">
+<input type="button" id="mode4Button" value="Mode 4" style="background-color:#ffffff" onClick="setMode(4);">
+<input type="button" id="mode5Button" value="Mode 5" style="background-color:#ffffff" onClick="setMode(5);">
+<input type="button" id="mode6Button" value="Mode 6" style="background-color:#ffffff" onClick="setMode(6);">
+<input type="button" id="mode7Button" value="Mode 7" style="background-color:#ffffff" onClick="setMode(7);">
+<input type="button" id="mode8Button" value="Mode 8" style="background-color:#ffffff" onClick="setMode(8);">
 <br>
+<h2> Analog Output</h2>
+Under Constructions
 <h2> Digital Output</h2>
-<input type="button" value="Port1 On" onClick="pepper.sendNoteOn(60,127);">
-<input type="button" value="Port1 Off" onCLick="pepper.sendNoteOff(60, 0);">
+<input type="button" value="Port1 On" onClick="pepper.digitalOutput(0,1);">
+<input type="button" value="Port1 Off" onCLick="pepper.digitalOutput(0,0);">
 <br>
-<input type="button" value="Port2 On" onClick="pepper.sendNoteOn(61,127);">
-<input type="button" value="Port2 Off" onCLick="pepper.sendNoteOff(61, 0);">
+<input type="button" value="Port2 On" onClick="pepper.digitalOutput(1,1);">
+<input type="button" value="Port2 Off" onCLick="pepper.digitalOutput(1,0);">
 <br>
-<input type="button" value="Port3 On" onClick="pepper.sendNoteOn(62,127);">
-<input type="button" value="Port3 Off" onCLick="pepper.sendNoteOff(62, 0);">
+<input type="button" value="Port3 On" onClick="pepper.digitalOutput(2,1);">
+<input type="button" value="Port3 Off" onCLick="pepper.digitalOutput(2,0);">
 <br>
-<input type="button" value="Port4 On" onClick="pepper.sendNoteOn(63,127);">
-<input type="button" value="Port4 Off" onCLick="pepper.sendNoteOff(63, 0);">
+<input type="button" value="Port4 On" onClick="pepper.digitalOutput(3,1);">
+<input type="button" value="Port4 Off" onCLick="pepper.digitalOutput(3,0);">
 <br>
 <h2> Analog Input</h2>
-<div id="ain1">
-</div>
+<table  border="1" width="500" cellspacing="0" cellpadding="3" bordercolor="#333333">
+	<tr>
+		<th>ANALOG 0</th>
+		<th>ANALOG 1</th>
+		<th>ANALOG 2</th>
+		<th>ANALOG 3</th>
+	</tr>
+	<tr>
+		<td id="ain0" align=center>0</td>
+		<td id="ain1" align=center>0</td>
+		<td id="ain2" align=center>0</td>
+		<td id="ain3" align=center>0</td>
+	</tr>
+</table>
 <h2> Digital Input</h2>
-<div id="din1">
-</div>
+<table  border="1" width="500" cellspacing="0" cellpadding="3" bordercolor="#333333">
+	<tr>
+		<th>DIGITAL 0</th>
+		<th>DIGITAL 1</th>
+		<th>DIGITAL 2</th>
+		<th>DIGITAL 3</th>
+	</tr>
+	<tr>
+		<td id="din0" align=center>0</td>
+		<td id="din1" align=center>0</td>
+		<td id="din2" align=center>0</td>
+		<td id="din3" align=center>0</td>
+	</tr>
+</table>
 
 </body>
 </html>

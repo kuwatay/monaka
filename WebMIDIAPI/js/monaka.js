@@ -70,7 +70,7 @@ var monaka = function() {
     if (val == 0) {
       this.sendNoteOff(60 + pin, 0);
     } else {
-      this.sendNoteOn(channel, 60 + pin, 127);
+      this.sendNoteOn(60 + pin, 127);
     }
     return true;
   }
@@ -80,7 +80,7 @@ var monaka = function() {
       return false;
     if (val > 127)
       return false;
-    this.sendControllerChange(channel, 22 + pin, val);
+    this.sendControllerChange(22 + pin, val);
     return true;
   }
 
