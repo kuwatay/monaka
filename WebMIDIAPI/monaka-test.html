@@ -3,7 +3,9 @@
 <body>
 <script src="js/monaka.js"></script>
 
-<h1> Simple monaka control </h1>
+<title> Simple Pepper-monaka control </title>
+<h1> Simple Pepper-monaka control</h2>
+ Pepper-monaka control with Web MIDI API
 <script type="text/javascript">
 var pepper = new monaka();
 var mode = 1;
@@ -34,32 +36,59 @@ function setMode(m) {
 		}
 	}
 }
+function setAout(port, newVal){
+	document.getElementById("aout"+port).innerHTML=newVal;
+	pepper.analogOutput(port, newVal);
+}
+
+function toggleDout(p) {
+	var bid = document.getElementById("dout"+p+"Button");
+	if (bid.value == "OFF") {
+		bid.value = "ON";
+		bid.style.background='#ff0000';
+		pepper.digitalOutput(p,1)
+	} else {
+		bid.value = "OFF";
+		bid.style.background='#ffffff';
+		pepper.digitalOutput(p,0)
+	}
+}
 </script>
-<h2> Set Monaka Mode</h2>
-<input type="button" id="mode1Button" value="Mode 1" style="background-color:#ff0000" onClick="setMode(1);">
-<input type="button" id="mode2Button" value="Mode 2" style="background-color:#ffffff" onClick="setMode(2);">
-<input type="button" id="mode3Button" value="Mode 3" style="background-color:#ffffff" onClick="setMode(3);">
-<input type="button" id="mode4Button" value="Mode 4" style="background-color:#ffffff" onClick="setMode(4);">
-<input type="button" id="mode5Button" value="Mode 5" style="background-color:#ffffff" onClick="setMode(5);">
-<input type="button" id="mode6Button" value="Mode 6" style="background-color:#ffffff" onClick="setMode(6);">
-<input type="button" id="mode7Button" value="Mode 7" style="background-color:#ffffff" onClick="setMode(7);">
-<input type="button" id="mode8Button" value="Mode 8" style="background-color:#ffffff" onClick="setMode(8);">
-<br>
-<h2> Analog Output</h2>
-Under Constructions
-<h2> Digital Output</h2>
-<input type="button" value="Port1 On" onClick="pepper.digitalOutput(0,1);">
-<input type="button" value="Port1 Off" onCLick="pepper.digitalOutput(0,0);">
-<br>
-<input type="button" value="Port2 On" onClick="pepper.digitalOutput(1,1);">
-<input type="button" value="Port2 Off" onCLick="pepper.digitalOutput(1,0);">
-<br>
-<input type="button" value="Port3 On" onClick="pepper.digitalOutput(2,1);">
-<input type="button" value="Port3 Off" onCLick="pepper.digitalOutput(2,0);">
-<br>
-<input type="button" value="Port4 On" onClick="pepper.digitalOutput(3,1);">
-<input type="button" value="Port4 Off" onCLick="pepper.digitalOutput(3,0);">
-<br>
+<h2>Monaka Mode</h2>
+<table  border="1" width="700" cellspacing="0" cellpadding="3" bordercolor="#333333">
+	<tr>
+		<th>Configuration</th><th>Mode1</th><th>Mode2</th><th>Mode3</th><th>Mode4</th><th>Mode5</th><th>Mode6</th><th>Mode7</th><th>Mode8</th>
+	</tr>
+		<td align=center> Select</td>
+		<td align=center><input type="button" id="mode1Button" value="Mode 1" style="background-color:#ff0000" onClick="setMode(1);"></td>
+		<td align=center><input type="button" id="mode2Button" value="Mode 2" style="background-color:#ffffff" onClick="setMode(2);"></td>
+		<td align=center><input type="button" id="mode3Button" value="Mode 3" style="background-color:#ffffff" onClick="setMode(3);"></td>
+		<td align=center><input type="button" id="mode4Button" value="Mode 4" style="background-color:#ffffff" onClick="setMode(4);"></td>
+		<td align=center><input type="button" id="mode5Button" value="Mode 5" style="background-color:#ffffff" onClick="setMode(5);"></td>
+		<td align=center><input type="button" id="mode6Button" value="Mode 6" style="background-color:#ffffff" onClick="setMode(6);"></td>
+		<td align=center><input type="button" id="mode7Button" value="Mode 7" style="background-color:#ffffff" onClick="setMode(7);"></td>
+		<td align=center><input type="button" id="mode8Button" value="Mode 8" style="background-color:#ffffff" onClick="setMode(8);"></td>
+	<tr>
+	</tr>
+	<tr>
+		<td align=center>Spec.</td> <td align=centerh>DOUT</td> <td align=centerh>COMB</td> <td align=center>TRIG</td> <td align=center>AIN/OUT</td> <td align=center>DIN</td> <td align=center>AIN/OUT</td> <td align=center>MATRIX</td> <td align=center>SERVO</td>
+	</tr>
+	<tr>
+		<td align=center>Analog In</td> <td align=center>0</td> <td align=center>0</td> <td align=center>0</td> <td align=center>2</td> <td align=center>0</td> <td align=center>3</td> <td align=center>0</td> <td align=center>2</td>
+	</tr>
+	<tr>
+		<td align=center>Analog Out</td> <td align=center>0</td> <td align=center>0</td> <td align=center>0</td> <td align=center>2</td> <td align=center>0</td> <td align=center>1</td> <td align=center>0</td> <td align=center>0</td>
+	</tr>
+	<tr>
+		<td align=center>Digital In</td> <td align=center>0</td> <td align=center>1</td> <td align=center>0</td> <td align=center>0</td> <td align=center>4</td> <td align=center>0</td> <td align=center>0</td> <td align=center>0</td>
+	</tr>
+	<tr>
+		<td align=center>Digital Out</td> <td align=center>4</td> <td align=center>2</td> <td align=center>2</td> <td align=center>0</td> <td align=center>0</td> <td align=center>0</td> <td align=center>0</td> <td align=center>0</td>
+	</tr>
+	<tr>
+		<td align=center>Special Function</td> <td align=center>-</td> <td align=center>TONE OUT</td> <td align=center>MIDI SYNC</td> <td align=center>-</td> <td align=center>-</td> <td align=center>-</td> <td align=center>2x2 in/out</td> <td align=center>2xservo</td>
+	</tr>
+</table>
 <h2> Analog Input</h2>
 <table  border="1" width="500" cellspacing="0" cellpadding="3" bordercolor="#333333">
 	<tr>
@@ -75,6 +104,34 @@ Under Constructions
 		<td id="ain3" align=center>0</td>
 	</tr>
 </table>
+
+<h2> Analog Output</h2>
+<table  border="1" width="500" cellspacing="0" cellpadding="3" bordercolor="#333333">
+	<tr>
+		<th>Port</th>
+		<th>Value</th>
+		<th>Slider</th>
+	</tr>
+	<tr>
+		<td align=center>Analog 0</td>
+		<td align=center><div id="aout0">0</div></td>
+		<td align=center><input type="range" value="0" min="0" max="127" style="position:relative; width:200px; height:30px; border:2px solid #cccccc;" 
+        onInput="setAout(0, this.value)" onchange="setAout(0, this.value)"> </td>
+	</tr>
+	<tr>
+		<td align=center>Analog 1</td>
+		<td align=center><div id="aout1">0</div></td>
+		<td align=center><input type="range" value="0" min="0" max="127" style="position:relative; width:200px; height:30px; border:2px solid #cccccc;" 
+        onInput="setAout(1, this.value)" onchange="setAout(1, this.value)"> </td>
+	</tr>
+	<tr>
+		<td align=center>Analog 2</td>
+		<td align=center><div id="aout2">0</div></td>
+		<td align=center><input type="range" value="0" min="0" max="127" style="position:relative; width:200px; height:30px; border:2px solid #cccccc;" 
+        onInput="setAout(2, this.value)" onchange="setAout(2, this.value)"> </td>
+	</tr>
+</table>
+
 <h2> Digital Input</h2>
 <table  border="1" width="500" cellspacing="0" cellpadding="3" bordercolor="#333333">
 	<tr>
@@ -88,6 +145,22 @@ Under Constructions
 		<td id="din1" align=center>0</td>
 		<td id="din2" align=center>0</td>
 		<td id="din3" align=center>0</td>
+	</tr>
+</table>
+
+<h2> Digital Output</h2>
+<table  border="1" width="500" cellspacing="0" cellpadding="3" bordercolor="#333333">
+	<tr>
+		<th>DIGITAL 0</th>
+		<th>DIGITAL 1</th>
+		<th>DIGITAL 2</th>
+		<th>DIGITAL 3</th>
+	</tr>
+	<tr>
+		<td id="dout0" align=center><input type="button" id="dout0Button" value="OFF" style="background-color:#ffffff" onClick="toggleDout(0)"></td>
+		<td id="dout1" align=center><input type="button" id="dout1Button" value="OFF" style="background-color:#ffffff" onClick="toggleDout(1)"></td>
+		<td id="dout2" align=center><input type="button" id="dout2Button" value="OFF" style="background-color:#ffffff" onClick="toggleDout(2)"></td>
+		<td id="dout3" align=center><input type="button" id="dout3Button" value="OFF" style="background-color:#ffffff" onClick="toggleDout(3)"></td>
 	</tr>
 </table>
 

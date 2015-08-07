@@ -80,7 +80,7 @@ var monaka = function() {
       return false;
     if (val > 127)
       return false;
-    this.sendControllerChange(22 + pin, val);
+    this.sendControlChange(22 + pin, val);
     return true;
   }
 
@@ -128,7 +128,7 @@ var monaka = function() {
 
   this.sendControlChange = function(ccno,value){
     if(this.output != null){
-      console.log("monaka.sendControlChange() output to :"+this.output.name);
+      console.log("monaka.sendControlChange("+ ccno + "," + value + ") output to :"+this.output.name);
       this.output.send([0xB0,ccno&0x7f,value&0x7f]);
     }
   }.bind(this);
